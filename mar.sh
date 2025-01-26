@@ -301,8 +301,8 @@ echo "username  : ${userpanel}" | tee -a log-install.txt
 echo "password  : ${passpanel}" | tee -a log-install.txt
 echo "-=================================-" | tee -a log-install.txt
 echo "Jangan lupa join Channel & Grup Telegram saya juga di" | tee -a log-install.txt
-echo "Telegram Channel: https://t.me/LingVPN" | tee -a log-install.txt
-echo "Telegram Group: https://t.me/LingVPN_Group" | tee -a log-install.txt
+echo "Telegram Channel: https://t.me/" | tee -a log-install.txt
+echo "Telegram Group: https://t.me/" | tee -a log-install.txt
 echo "-=================================-" | tee -a log-install.txt
 colorized_echo green "Script telah berhasil di install"
 rm /root/mar.sh
