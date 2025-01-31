@@ -248,7 +248,7 @@ wget -O /opt/marzban/nginx.conf "https://raw.githubusercontent.com/Hermananza/Ma
 wget -O /opt/marzban/default.conf "https://raw.githubusercontent.com/Hermananza/MarLing/main/vps.conf"
 wget -O /opt/marzban/xray.conf "https://raw.githubusercontent.com/Hermananza/MarLing/main/xray.conf"
 mkdir -p /var/www/html
-echo "<pre>Setup by AutoScript LingVPN</pre>" > /var/www/html/index.html
+echo "<pre>HC STORE WA +6285173167456</pre>" > /var/www/html/index.html
 
 #install socat
 apt install iptables -y
