@@ -29,6 +29,21 @@ Credit aplikasi full to [Gozargah Marzban](https://github.com/Gozargah), saya ha
   ```html
 python3 backup/backup.py
   ```
+Upload file backup ke tmpfiles.org
+
+* Unduh file simpan di path /var/backups
+  ```html
+  wget -P /var/backups "link backup.zip"
+  ```
+* Extrak file
+  ```html
+  unzip /var/backups/backup.zip -d /var/lib/marzban
+  ```
+* Jalankan perintah
+  ```html
+  marzban update
+  ```
+  
 # Instalasi
   ```html
  apt-get update && apt-get upgrade -y && apt dist-upgrade -y && update-grub && reboot
