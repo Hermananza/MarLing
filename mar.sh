@@ -248,7 +248,12 @@ wget -O /opt/marzban/nginx.conf "https://raw.githubusercontent.com/Hermananza/Ma
 wget -O /opt/marzban/default.conf "https://raw.githubusercontent.com/Hermananza/MarLing/main/vps.conf"
 wget -O /opt/marzban/xray.conf "https://raw.githubusercontent.com/Hermananza/MarLing/main/xray.conf"
 mkdir -p /var/www/html
-echo "<pre>HC STORE WA +6285173167456</pre>" > /var/www/html/index.html
+echo "<pre>
+<div>
+<h2>HC STORE</h2>
+<a href="https://t.me/hermananza" target="_blank"><i class="fab fa-telegram"></i> Order Akun Vpn</a>
+</div>
+        </pre>" > /var/www/html/index.html
 
 #install socat
 apt install iptables -y
