@@ -25,7 +25,10 @@ Credit aplikasi full to [Gozargah Marzban](https://github.com/Gozargah), saya ha
 # Sistem VM yang dapat digunakan
 - Debian 11 [**RECOMMENDED**] </br>
 - Ubuntu 20.04 </br>
-
+# Backup
+  ```html
+python3 backup/backup.py
+  ```
 # Instalasi
   ```html
  apt-get update && apt-get upgrade -y && apt dist-upgrade -y && update-grub && reboot
