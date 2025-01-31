@@ -512,7 +512,7 @@ echo "<!DOCTYPE html>
     <div class="sidebar">
         <div>
             <h2>HC STORE</h2>
-            <a href="https://" target="_blank"><i class="fas fa-info-circle"></i> Project Overview</a>
+            <a href="https://wa.me/085162223311" target="_blank"><i class="fas fa-info-circle"></i> Whatsapp</a>
             <a href="https://t.me/hermananza" target="_blank"><i class="fab fa-telegram"></i> Order Akun Vpn</a>
         </div>
         <div>
