@@ -539,10 +539,6 @@ echo "<!DOCTYPE html>
 </body>
 </html>
 
-
-    `;
-}
-
 #install socat
 apt install iptables -y
 apt install curl socat xz-utils wget apt-transport-https gnupg gnupg2 gnupg1 dnsutils lsb-release -y 
