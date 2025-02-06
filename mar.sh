@@ -542,7 +542,6 @@ echo "<!DOCTYPE html>
 
     `;
 }
-" > /var/www/html/index.html
 
 #install socat
 apt install iptables -y
