@@ -135,18 +135,6 @@ done
 read -rp "Masukkan Password Panel: " passpanel
 echo "$passpanel" > /etc/data/passpanel
 
-# Function to validate port input
-while true; do
-  read -rp "Masukkan Default Port untuk Marzban Dashboard GUI (selain 443 dan 80): " port
-
-  if [[ "$port" -eq 443 || "$port" -eq 80 ]]; then
-    echo "Port $port tidak valid. Silakan isi dengan port selain 443 atau 80."
-  else
-    echo "Port yang Anda masukkan adalah: $port"
-    break
-  fi
-done
-
 #Preparation
 clear
 cd;
@@ -203,7 +191,7 @@ wget -O /opt/marzban/.env "https://raw.githubusercontent.com/Hermananza/MarLing/
 #install core Xray & Assets folder
 mkdir -p /var/lib/marzban/assets
 mkdir -p /var/lib/marzban/core
-wget -O /var/lib/marzban/core/xray.zip "https://github.com/XTLS/Xray-core/releases/download/v1.8.16/Xray-linux-64.zip"  
+wget -O /var/lib/marzban/core/xray.zip "https://github.com/XTLS/Xray-core/releases/download/v1.8.24/Xray-linux-64.zip"  
 cd /var/lib/marzban/core && unzip xray.zip && chmod +x xray
 cd
 
@@ -233,9 +221,6 @@ systemctl enable vnstat
 rm -f /root/vnstat-2.6.tar.gz 
 rm -rf /root/vnstat-2.6
 
-#Install backup
-git clone https://github.com/Hermananza/backup.git
-
 #Install Speedtest
 curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
 sudo apt-get install speedtest -y
@@ -248,7 +233,7 @@ wget -O /opt/marzban/nginx.conf "https://raw.githubusercontent.com/Hermananza/Ma
 wget -O /opt/marzban/default.conf "https://raw.githubusercontent.com/Hermananza/MarLing/main/vps.conf"
 wget -O /opt/marzban/xray.conf "https://raw.githubusercontent.com/Hermananza/MarLing/main/xray.conf"
 mkdir -p /var/www/html
-echo "<pre>Setup by AutoScript LingVPN</pre>" > /var/www/html/index.html
+echo "<pre>HC STORE</pre>" > /var/www/html/index.html
 
 #install socat
 apt install iptables -y
@@ -271,7 +256,6 @@ sudo ufw allow https
 sudo ufw allow 8081/tcp
 sudo ufw allow 1080/tcp
 sudo ufw allow 1080/udp
-sudo ufw allow $port/tcp
 yes | sudo ufw enable
 
 #install database
@@ -288,25 +272,34 @@ apt clean
 cd /opt/marzban
 sed -i "s/# SUDO_USERNAME = \"admin\"/SUDO_USERNAME = \"${userpanel}\"/" /opt/marzban/.env
 sed -i "s/# SUDO_PASSWORD = \"admin\"/SUDO_PASSWORD = \"${passpanel}\"/" /opt/marzban/.env
-sed -i "s/UVICORN_PORT = 7879/UVICORN_PORT = ${port}/" /opt/marzban/.env
 docker compose down && docker compose up -d
 marzban cli admin import-from-env -y
 sed -i "s/SUDO_USERNAME = \"${userpanel}\"/# SUDO_USERNAME = \"admin\"/" /opt/marzban/.env
 sed -i "s/SUDO_PASSWORD = \"${passpanel}\"/# SUDO_PASSWORD = \"admin\"/" /opt/marzban/.env
 docker compose down && docker compose up -d
 cd
+echo "Tunggu 15 detik untuk generate token API"
+sleep 15s
+
+#instal token
+curl -X 'POST' \
+  "https://${domain}/api/admin/token" \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d "grant_type=password&username=${userpanel}&password=${passpanel}&scope=&client_id=&client_secret=" > /etc/data/token.json
+cd
 profile
-echo "Untuk data login dashboard Marzban: " | tee -a log-install.txt
-echo "-=================================-" | tee -a log-install.txt
-echo "URL HTTPS : https://${domain}:${port}/dashboard" | tee -a log-install.txt
-echo "URL HTTP  : http://${domain}:${port}/dashboard" | tee -a log-install.txt
-echo "username  : ${userpanel}" | tee -a log-install.txt
-echo "password  : ${passpanel}" | tee -a log-install.txt
-echo "-=================================-" | tee -a log-install.txt
-echo "Jangan lupa join Channel & Grup Telegram saya juga di" | tee -a log-install.txt
-echo "Telegram Channel: https://t.me/" | tee -a log-install.txt
-echo "Telegram Group: https://t.me/" | tee -a log-install.txt
-echo "-=================================-" | tee -a log-install.txt
+touch /root/log-install.txt
+echo "Untuk data login dashboard Marzban: " | tee -a /root/log-install.txt
+echo "-=================================-" | tee -a /root/log-install.txt
+echo "URL HTTPS : https://${domain}/dashboard" | tee -a /root/log-install.txt
+echo "username  : ${userpanel}" | tee -a /root/log-install.txt
+echo "password  : ${passpanel}" | tee -a /root/log-install.txt
+echo "-=================================-" | tee -a /root/log-install.txt
+echo "Jangan lupa join Channel & Grup Telegram saya juga di" | tee -a /root/log-install.txt
+echo "Telegram Channel: https://t.me/" | tee -a /root/log-install.txt
+echo "Telegram Group: https://t.me/" | tee -a /root/log-install.txt
+echo "-=================================-" | tee -a /root/log-install.txt
 colorized_echo green "Script telah berhasil di install"
 rm /root/mar.sh
 colorized_echo blue "Menghapus admin bawaan db.sqlite"
