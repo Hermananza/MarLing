@@ -313,4 +313,8 @@
   ]
 }
 {
-  
+  "log": {
+    "access": "",
+    "loglevel": "error",
+    "dnsLog": false
+  }  
