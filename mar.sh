@@ -191,6 +191,9 @@ wget -O /opt/marzban/.env "https://raw.githubusercontent.com/Hermananza/MarLing/
 #instal backup
 git clone https://github.com/Hermananza/backup.git
 
+#instal limit
+git clone https://github.com/Hermananza/ip_limit_enforcer.git
+
 #install core Xray & Assets folder
 mkdir -p /var/lib/marzban/assets
 mkdir -p /var/lib/marzban/core
