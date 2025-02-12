@@ -309,13 +309,6 @@
       "settings": {
         "nonIPQuery": "skip"
       }
-    },
-    {
-        "log": {
-    "access": "/var/lib/marzban/access.log",
-    "loglevel": "error",
-    "dnsLog": false
-      }
     }
   ]
 }
