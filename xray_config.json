@@ -312,10 +312,10 @@
     },
     {
         "log": {
-    "access": "",
+    "access": "/var/lib/marzban/access.log",
     "loglevel": "error",
     "dnsLog": false
-        }
+      }
     }
   ]
 }
