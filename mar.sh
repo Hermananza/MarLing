@@ -125,6 +125,9 @@ sudo bash -c "$(curl -sL https://github.com/Hermananza/Marzban-scripts/raw/maste
 #Install Subs
 wget -N -P /var/lib/marzban/templates/subscription/  https://raw.githubusercontent.com/Hermananza/MarLing/main/index.html
 
+#Install Backup
+git clone https://github.com/Hermananza/backup.git
+
 #install env
 wget -O /opt/marzban/.env "https://raw.githubusercontent.com/Hermananza/MarLing/main/env"
 
