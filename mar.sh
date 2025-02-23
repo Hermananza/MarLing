@@ -158,9 +158,6 @@ systemctl enable vnstat
 rm -f /root/vnstat-2.6.tar.gz 
 rm -rf /root/vnstat-2.6
 
-#Install Backup
-git clone https://github.com/Hermananza/backup.git
-
 #Install Speedtest
 curl -s https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh | sudo bash
 sudo apt-get install speedtest -y
@@ -173,7 +170,7 @@ wget -O /opt/marzban/nginx.conf "https://raw.githubusercontent.com/Hermananza/Ma
 wget -O /opt/marzban/default.conf "https://raw.githubusercontent.com/Hermananza/MarLing/main/vps.conf"
 wget -O /opt/marzban/xray.conf "https://raw.githubusercontent.com/Hermananza/MarLing/main/xray.conf"
 mkdir -p /var/www/html
-echo "<pre>Setup by AutoScript LingVPN</pre>" > /var/www/html/index.html
+echo "<pre>HC STORE</pre>" > /var/www/html/index.html
 
 #install socat
 apt install iptables -y
@@ -228,18 +225,18 @@ curl -X 'POST' \
   -H 'Content-Type: application/x-www-form-urlencoded' \
   -d "grant_type=password&username=${userpanel}&password=${passpanel}&scope=&client_id=string&client_secret=string" > /etc/data/token.json
 cd
-profile
 touch /root/log-install.txt
-echo "Untuk data login dashboard Marzban: " | tee -a /root/log-install.txt
-echo "-=================================-" | tee -a /root/log-install.txt
-echo "URL HTTPS : https://${domain}/dashboard" | tee -a /root/log-install.txt
-echo "username  : ${userpanel}" | tee -a /root/log-install.txt
-echo "password  : ${passpanel}" | tee -a /root/log-install.txt
-echo "-=================================-" | tee -a /root/log-install.txt
-echo "Jangan lupa join Channel & Grup Telegram saya juga di" | tee -a /root/log-install.txt
-echo "Telegram Channel: https://t.me/LingVPN" | tee -a /root/log-install.txt
-echo "Telegram Group: https://t.me/LingVPN_Group" | tee -a /root/log-install.txt
-echo "-=================================-" | tee -a /root/log-install.txt
+echo -e "Untuk data login dashboard Marzban: 
+-=================================-
+URL HTTPS : https://${domain}/dashboard 
+username  : ${userpanel}
+password  : ${passpanel}
+-=================================-
+Jangan lupa join Channel & Grup Telegram saya juga di
+Telegram Channel: https://t.me/
+Telegram Group: https://t.me/
+-=================================-" > /root/log-install.txt
+profile
 colorized_echo green "Script telah berhasil di install"
 rm /root/mar.sh
 colorized_echo blue "Menghapus admin bawaan db.sqlite"
